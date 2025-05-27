@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulübersicht</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-10">
+  <!-- Überschrift zentriert über den Karten -->
+  <h1 class="text-2xl font-bold text-center text-yellow-400 mb-6">Häufig verwendete Programme</h1>
+  <!-- Grid mittig ausrichten -->
+  <div class="flex justify-center">
+    <div class="grid grid-cols-2 gap-x-4 gap-y-4">
+      <!-- Karten werden hier eingefügt -->
+    </div>
+  </div>
+
+  <script>
+    const moduleData = [
+      { code: "GST07", title: "Personalstamm" },
+      { code: "AST01", title: "Personalstamm AAZ" },
+      { code: "GST29", title: "Erweiterter Personalstamm" },
+      { code: "EST01", title: "Personalstamm PEP" },
+      { code: "AST04", title: "Zeitmodelle" },
+      { code: "AST03", title: "Zeitparameter" },
+      { code: "EST04", title: "Zeitmodelle je Planungseinheit" },
+      { code: "GST08", title: "Berechtigung / Passwort" },
+      { code: "GST05", title: "Abteilung / Kostenstelle" },
+      { code: "GST31", title: "Arbeitsplatz" },
+      { code: "ABE50", title: "Zeitkorrektur" },
+      { code: "EBE50", title: "Auftrag Personaleinsatzplanung" },
+      { code: "AST60", title: "Workflow-Hierachie" },
+      { code: "AST25", title: "Kappungstyp je Person" }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.querySelector('.grid.grid-cols-2');
+      moduleData.forEach(({ code, title }) => {
+        const card = document.createElement('div');
+        // Feste Breite w-64 und Höhe h-12
+        card.className = 'shadow hover:shadow-lg transition rounded-xl overflow-hidden w-70 h-12 flex';
+
+        card.innerHTML = `
+          <!-- Linker gelber Balken mit fester Breite und ohne Flex-Wachstum/-Schrumpfung -->
+          <div class="bg-yellow-500 w-24 h-full flex-none flex items-center justify-center">
+            <span class="font-mono text-2xl font-bold text-blue-900">${code}</span>
+          </div>
+          <!-- Rechter Bereich für Titel -->
+          <div class="bg-gray-800 flex-grow h-full px-3 flex items-center justify-end">
+            <span class="text-lg font-medium text-right">${title}</span>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>
